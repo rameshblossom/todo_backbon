@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Todo Exam.</title>
+  <link rel="stylesheet" href="styles/todo.css"/>
+</head>
+
+<body>
+
+  <div id="todoapp">
+
+    <header>
+      <h1>Todos</h1>
+      <input id="new-todo" type="text" placeholder="What needs to be done?">
+    </header>
+
+    <section id="main">
+      <input id="toggle-all" type="checkbox">
+      <label for="toggle-all">Mark all as complete</label>
+      <ul id="todo-list"></ul>
+    </section>
+
+    <footer>
+      <a id="clear-completed">Clear completed</a>
+      <div id="todo-count"></div>
+    </footer>
+
+  </div>
+
+  <div id="instructions">
+    Completed solutions : 
+    <ol>
+    <li>Newly added activity change color after 30 seconds to red.</li>
+    <li>click activity completed font change as green.</li>
+    <li>two coloumns are added added time and completed time</li>
+    </ol>
+  </div>
+
+  <div id="credits">
+    Modified by
+    <br />
+    <a >Rameshkumar.A</a>.
+    <br />Rewritten by: <a href="http://addyosmani.github.com/todomvc">TodoMVC</a>.
+  </div>
+
+  <script src="assets/json2s.js"></script>
+  <script src="assets/jquery.js"></script>
+  <script src="assets/underscore.js"></script>
+  <script src="assets/backbone.js"></script>
+  <script src="assets/backbone.localStorage.js"></script>
+  <script src="lib/todos.js"></script>
+
+  <!-- Templates -->
+
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+      <label class="changeColor" style="font-family:sans-serif; color:red; cursor:pointer;"><%- title %></label><br />
+      <p class="added">Add at : <%- addtime %> <a style="float: right;">Completed at : <%- completedtime %></a></p>
+      <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%- title %>" />
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <% if (done) { %>
+      <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+  </script>
+
+  </body>
+</html>
